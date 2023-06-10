@@ -2,17 +2,33 @@
 #define _LIBEFI_INCLUDE_
 
 #include <efi.h>
+#include <stdarg.h>
 
-EFI_SYSTEM_TABLE *ST;
-EFI_HANDLE IH;
-EFI_BOOT_SERVICES *BS;
-EFI_RUNTIME_SERVICES *RS;
+extern EFI_SYSTEM_TABLE *ST;
+extern EFI_HANDLE IH;
+extern EFI_BOOT_SERVICES *BS;
+extern EFI_RUNTIME_SERVICES *RS;
 
 VOID init_lib(EFI_HANDLE, EFI_SYSTEM_TABLE *);
 
 // Console functions.
-VOID puts(CHAR16 *);
+VOID puts(const CHAR16 *);
 VOID putchar(CHAR16);
-INTN printf(CHAR16 *, ...);
+INTN printf(const CHAR16 *, ...);
+
+// String functions.
+UINTN strlen(const CHAR16 *);
+
+// Stdlib functions.
+VOID uitoh(CHAR16 *, UINT64);
+VOID itos(CHAR16 *, INTN);
+
+// Alloc functions.
+
+VOID *malloc(UINTN);
+VOID free(VOID *);
+
+// Mem functions.
+VOID *memcpy(VOID *, const VOID *, UINT64);
 
 #endif
