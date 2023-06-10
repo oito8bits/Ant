@@ -4,30 +4,21 @@
 #define EFIAPI __attribute__((ms_abi))
 
 // Common UEFI Data Types.
-typedef unsigned char uint8_t;
-typedef unsigned short uint16_t;
-typedef unsigned int uint32_t;
-typedef unsigned long long int uint64_t;
+typedef unsigned char           UINT8;
+typedef unsigned short          UINT16;
+typedef unsigned int            UINT32;
+typedef unsigned long long int  UINT64;
+typedef UINT64                  UINTN;
 
-typedef signed char int8_t;
-typedef signed short int16_t;
-typedef signed int int32_t;
-typedef signed long long int int64_t;
+typedef char          INT8;
+typedef short         INT16;
+typedef int           INT32;
+typedef long long int INT64;
+typedef INT64         INTN;
 
-typedef uint8_t   UINT8;
-typedef uint16_t  UINT16;
-typedef uint32_t  UINT32;
-typedef uint64_t  UINT64;
-typedef uint64_t  UINTN;
+typedef INT8 BOOLEAN;
 
-typedef int8_t  INT8;
-typedef int16_t INT16;
-typedef int32_t INT32;
-typedef int64_t INT64;
-typedef int64_t INTN;
-
-typedef uint8_t BOOLEAN;
-
+typedef UINT64 EFI_LBA;
 
 #define INTERFACE_DECL(x) struct x
 
