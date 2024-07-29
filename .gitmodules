@@ -1,0 +1,6 @@
+[submodule "antkernel"]
+	path = antkernel
+	url = git@github.com:8oito-bits/antkernel.git
+[submodule "antboot"]
+	path = antboot
+	url = git@github.com:8oito-bits/antboot.git

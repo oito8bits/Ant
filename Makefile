@@ -9,22 +9,22 @@ ant_img: BOOTX64.EFI ant_kernel
 	sudo mount $(ANT_IMG) ant_dir
 	sudo mkdir ant_dir/efi/boot -p
 	sudo mkdir ant_dir/boot -p
-	sudo cp boot/efi/BOOTX64.EFI ant_dir/efi/boot/
-	sudo cp kernel/arch/x86_64/ant_kernel ant_dir/boot/
+	sudo cp antboot/BOOTX64.EFI ant_dir/efi/boot/
+	sudo cp antkernel/ant_kernel ant_dir/boot/
 	sudo umount $(ANT_IMG)
 	rmdir ant_dir
 
 ant_kernel:
-	make -C kernel/arch/x86_64/
+	make -C antkernel/
 
 BOOTX64.EFI:
-	make -C boot/efi/
+	make -C antboot/
 
 .PHONY: clean run_vnc run
 
 clean:
-	make clean -C boot/efi
-	make clean -C kernel/arch/x86_64/
+	make clean -C antboot/
+	make clean -C antkernel/
 	rm Ant.img
 
 run_vnc:
