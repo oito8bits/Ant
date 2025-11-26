@@ -1,6 +1,6 @@
 ANT_IMG=Ant.img
 
-Ant.img: BOOTX64.EFI ant_kernel
+Ant.img: BOOTX64.EFI ant_kernel userland
 	dd if=/dev/zero of=$(ANT_IMG) bs=1024 count=46875
 	
 	mkfs.fat -v -F32 $(ANT_IMG)
@@ -11,8 +11,13 @@ Ant.img: BOOTX64.EFI ant_kernel
 	sudo mkdir ant_dir/boot -p
 	sudo cp antboot/BOOTX64.EFI ant_dir/efi/boot/
 	sudo cp antkernel/ant_kernel ant_dir/boot/
+	sudo tar -cvf ant_dir/ramfs.tar userland/shell
 	sudo umount Ant.img
 	rmdir ant_dir
+	cp Ant.img /mnt/c/Users/usuar/Desktop/qemu/
+
+userland:
+	make -C userland/
 
 ant_kernel:
 	make -C antkernel/
