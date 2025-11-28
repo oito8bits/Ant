@@ -1,6 +1,6 @@
 ANT_IMG=Ant.img
 
-Ant.img: BOOTX64.EFI ant_kernel userland
+Ant.img: BOOTX64.EFI ant_kernel userland/shell
 	dd if=/dev/zero of=$(ANT_IMG) bs=1024 count=46875
 	
 	mkfs.fat -v -F32 $(ANT_IMG)
@@ -16,7 +16,7 @@ Ant.img: BOOTX64.EFI ant_kernel userland
 	rmdir ant_dir
 	cp Ant.img /mnt/c/Users/usuar/Desktop/qemu/
 
-userland:
+userland/shell:
 	make -C userland/
 
 ant_kernel:
@@ -30,6 +30,7 @@ BOOTX64.EFI:
 clean:
 	make clean -C antboot/
 	make clean -C antkernel/
+	make clean -C userland/
 	rm Ant.img
 
 run:

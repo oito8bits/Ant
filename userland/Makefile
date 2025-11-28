@@ -1,5 +1,5 @@
 shell: shell.o
-	gcc $^ -o $@
+	gcc $^ -o $@ --static
 
 %.o: %.c
 	gcc -c -o $@ $<
@@ -7,4 +7,4 @@ shell: shell.o
 .PHONY: clean
 
 clean:
-	rm *.o shell
+		rm *.o shell
